@@ -1,6 +1,6 @@
 # UPRRP Weather Station
 
-This repository contains the code and configuration files for the automated Weather Station project implemented during July to August 2021 as part of the UPRRP Upward Bound & T3 Alliance collaboration. The project was created at the University of Puerto Rico, Rio Piedras Campus, utilizing an AcuRite - Iris (5-in-1) Pro Weather Station, paired with a Raspberry Pi (RPi) board to broadcast real-time weather conditions. The code was implemented using Node-RED on a Raspberry Pi computer kit. **Note:** The project is no longer operational.
+This repository contains the code and configuration files for the automated Weather Station project implemented during July to August 2021 as part of the UPRRP Upward Bound & T3 Alliance collaboration. The project was created at the University of Puerto Rico, Rio Piedras Campus, utilizing an AcuRite - Iris (5-in-1) Pro Weather Station, paired with a Raspberry Pi (RPi) board to broadcast real-time weather conditions.
 
 ## Project Overview
 
