@@ -1,0 +1,81 @@
+[
+  {
+    "id": "12af8a73.073426",
+    "type": "tab",
+    "label": "bmepressure",
+    "disabled": false,
+    "info": ""
+  },
+  {
+    "id": "ccff5718.ecb1c8",
+    "type": "inject",
+    "z": "12af8a73.073426",
+    "name": "",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "repeat": "10",
+    "crontab": "",
+    "once": true,
+    "onceDelay": "10",
+    "x": 210,
+    "y": 220,
+    "wires": [
+      [
+        "68300791.f74698"
+      ]
+    ]
+  },
+  {
+    "id": "68300791.f74698",
+    "type": "Bme280",
+    "z": "12af8a73.073426",
+    "name": "",
+    "bus": "1",
+    "address": "0x76",
+    "topic": "bme280",
+    "extra": true,
+    "x": 300,
+    "y": 320,
+    "wires": [
+      [
+        "d05b10a0.0296c"
+      ]
+    ]
+  },
+  {
+    "id": "d05b10a0.0296c",
+    "type": "function",
+    "z": "12af8a73.073426",
+    "name": "A Pressure Hg",
+    "func": "//crea variable de tipo objeto\nvar stationAP = {};\n\n//le dices al\nstationAP.payload = msg.payload.pressure_Hg;\n\nstationAP.topic = \"stationAP\";\n\nreturn stationAP;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 440,
+    "y": 200,
+    "wires": [
+      [
+        "2c899db6.9b0592"
+      ]
+    ]
+  },
+  {
+    "id": "2c899db6.9b0592",
+    "type": "thingspeak42",
+    "z": "12af8a73.073426",
+    "name": "",
+    "delay": "0",
+    "topic1": "",
+    "topic2": "",
+    "topic3": "",
+    "topic4": "",
+    "topic5": "",
+    "topic6": "stationAP",
+    "topic7": "",
+    "topic8": "",
+    "endpoint": "https://thingspeak.com",
+    "x": 690,
+    "y": 200,
+    "wires": []
+  }
+]

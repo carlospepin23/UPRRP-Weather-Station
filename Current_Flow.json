@@ -1,0 +1,466 @@
+[
+  {
+    "id": "995f7983.e3c6b8",
+    "type": "tab",
+    "label": "Codigo Master A",
+    "disabled": false,
+    "info": ""
+  },
+  {
+    "id": "f6fd3e81.cfca",
+    "type": "rtl_433",
+    "z": "995f7983.e3c6b8",
+    "name": "",
+    "device": "",
+    "frequency": "",
+    "protocols": "",
+    "x": 50,
+    "y": 120,
+    "wires": [
+      [
+        "a35fe6fc.43dce8",
+        "8d1aa4ee.739548"
+      ]
+    ]
+  },
+  {
+    "id": "15bbbea9.52f561",
+    "type": "debug",
+    "z": "995f7983.e3c6b8",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "x": 1150,
+    "y": 160,
+    "wires": []
+  },
+  {
+    "id": "a35fe6fc.43dce8",
+    "type": "switch",
+    "z": "995f7983.e3c6b8",
+    "name": "",
+    "property": "payload.channel",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "eq",
+        "v": "A",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "B",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "C",
+        "vt": "str"
+      }
+    ],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 3,
+    "x": 250,
+    "y": 60,
+    "wires": [
+      [
+        "7de20175.ab1ce",
+        "15bbbea9.52f561",
+        "9d5a14ed.a46b68",
+        "75292b7a.254cc4",
+        "5f087885.5ba078",
+        "6825090b.639298",
+        "d4af47a1.cad398"
+      ],
+      [
+        "15bbbea9.52f561"
+      ],
+      [
+        "a19cbbcf.c3e7c8",
+        "15bbbea9.52f561"
+      ]
+    ]
+  },
+  {
+    "id": "a19cbbcf.c3e7c8",
+    "type": "function",
+    "z": "995f7983.e3c6b8",
+    "name": "C",
+    "func": "var stationC = {};\n\nstationC.payload = msg.payload.wind_avg_km_h;\nstationC.topic = \"stationC\";\n\nreturn stationC;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 810,
+    "y": 200,
+    "wires": [
+      [
+        "15bbbea9.52f561"
+      ]
+    ]
+  },
+  {
+    "id": "7de20175.ab1ce",
+    "type": "function",
+    "z": "995f7983.e3c6b8",
+    "name": "A Wind Speed",
+    "func": "//crea variable de tipo objeto\nvar stationA = {};\n\n//le dices al\nstationA.payload = msg.payload.wind_avg_km_h;\n\nstationA.topic = \"stationAVV\";\n\nreturn stationA;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 820,
+    "y": 260,
+    "wires": [
+      [
+        "d5487786.f558e8",
+        "575fcaef.e542e4",
+        "15bbbea9.52f561"
+      ]
+    ]
+  },
+  {
+    "id": "9d5a14ed.a46b68",
+    "type": "mqtt out",
+    "z": "995f7983.e3c6b8",
+    "name": "",
+    "topic": "sf_stationc",
+    "qos": "",
+    "retain": "",
+    "broker": "b688b770.1b7618",
+    "x": 770,
+    "y": 40,
+    "wires": []
+  },
+  {
+    "id": "d5487786.f558e8",
+    "type": "thingspeak42",
+    "z": "995f7983.e3c6b8",
+    "name": "",
+    "delay": "0",
+    "topic1": "stationAVV",
+    "topic2": "stationATF",
+    "topic3": "stationAH",
+    "topic4": "stationAR",
+    "topic5": "stationAVD",
+    "topic6": "stationAP",
+    "topic7": "",
+    "topic8": "",
+    "endpoint": "https://thingspeak.com",
+    "x": 1350,
+    "y": 360,
+    "wires": []
+  },
+  {
+    "id": "75292b7a.254cc4",
+    "type": "function",
+    "z": "995f7983.e3c6b8",
+    "name": "A Temperature",
+    "func": "//crea variable de tipo objeto\nvar stationATF = {};\n\n//le dices al\nstationATF.payload = msg.payload.temperature_F;\n\nstationATF.topic = \"stationATF\";\n\nreturn stationATF;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 820,
+    "y": 300,
+    "wires": [
+      [
+        "d5487786.f558e8",
+        "12dc79e4.316346"
+      ]
+    ]
+  },
+  {
+    "id": "5f087885.5ba078",
+    "type": "function",
+    "z": "995f7983.e3c6b8",
+    "name": "A Humidity",
+    "func": "//crea variable de tipo objeto\nvar stationAH = {};\n\n//le dices al\nstationAH.payload = msg.payload.humidity;\n\nstationAH.topic = \"stationAH\";\n\nreturn stationAH;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 810,
+    "y": 340,
+    "wires": [
+      [
+        "d5487786.f558e8",
+        "24d89c1f.530494"
+      ]
+    ]
+  },
+  {
+    "id": "6825090b.639298",
+    "type": "function",
+    "z": "995f7983.e3c6b8",
+    "name": "A Rain",
+    "func": "//crea variable de tipo objeto\nvar stationAR = {};\n\n//le dices al\nstationAR.payload = msg.payload.rain_in;\n\nstationAR.topic = \"stationAR\";\n\nreturn stationAR;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 790,
+    "y": 380,
+    "wires": [
+      [
+        "d5487786.f558e8",
+        "8e132871.7987a8"
+      ]
+    ]
+  },
+  {
+    "id": "d4af47a1.cad398",
+    "type": "function",
+    "z": "995f7983.e3c6b8",
+    "name": "A Wind Direction",
+    "func": "//crea variable de tipo objeto\nvar stationAVD = {};\n\n//le dices al\nstationAVD.payload = msg.payload.wind_dir_deg;\n\nstationAVD.topic = \"stationAVD\";\n\nreturn stationAVD;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 820,
+    "y": 440,
+    "wires": [
+      [
+        "d5487786.f558e8",
+        "b7bce690.462148"
+      ]
+    ]
+  },
+  {
+    "id": "12dc79e4.316346",
+    "type": "template",
+    "z": "995f7983.e3c6b8",
+    "name": "temperature",
+    "field": "payload",
+    "fieldType": "msg",
+    "format": "handlebars",
+    "syntax": "mustache",
+    "template": "Temperature for now is : {{payload}} !",
+    "output": "str",
+    "x": 1130,
+    "y": 600,
+    "wires": [
+      [
+        "dc96165e.811b98"
+      ]
+    ]
+  },
+  {
+    "id": "24d89c1f.530494",
+    "type": "template",
+    "z": "995f7983.e3c6b8",
+    "name": "Humidity",
+    "field": "payload",
+    "fieldType": "msg",
+    "format": "handlebars",
+    "syntax": "mustache",
+    "template": "Humidity today seems to be: {{payload}} ! ",
+    "output": "str",
+    "x": 1120,
+    "y": 640,
+    "wires": [
+      [
+        "dc96165e.811b98"
+      ]
+    ]
+  },
+  {
+    "id": "b4faf557.dc3718",
+    "type": "template",
+    "z": "995f7983.e3c6b8",
+    "name": "Pressure",
+    "field": "payload",
+    "fieldType": "msg",
+    "format": "handlebars",
+    "syntax": "mustache",
+    "template": "Today's Pressure is: {{payload}} ! ",
+    "output": "str",
+    "x": 1120,
+    "y": 780,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "dc96165e.811b98",
+    "type": "join",
+    "z": "995f7983.e3c6b8",
+    "name": "",
+    "mode": "custom",
+    "build": "string",
+    "property": "payload",
+    "propertyType": "msg",
+    "key": "payload",
+    "joiner": " ",
+    "joinerType": "str",
+    "accumulate": false,
+    "timeout": "",
+    "count": "3",
+    "reduceRight": false,
+    "reduceExp": "",
+    "reduceInit": "",
+    "reduceInitType": "",
+    "reduceFixup": "",
+    "x": 210,
+    "y": 900,
+    "wires": [
+      [
+        "8f4adee2.7bcb",
+        "dc1fcb8c.3381d8"
+      ]
+    ]
+  },
+  {
+    "id": "dc1fcb8c.3381d8",
+    "type": "debug",
+    "z": "995f7983.e3c6b8",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "x": 1190,
+    "y": 880,
+    "wires": []
+  },
+  {
+    "id": "575fcaef.e542e4",
+    "type": "template",
+    "z": "995f7983.e3c6b8",
+    "name": "Wind speed",
+    "field": "payload",
+    "fieldType": "msg",
+    "format": "handlebars",
+    "syntax": "mustache",
+    "template": "Today's wind speed is: {{payload}} !",
+    "output": "str",
+    "x": 1130,
+    "y": 680,
+    "wires": [
+      [
+        "dc96165e.811b98"
+      ]
+    ]
+  },
+  {
+    "id": "b7bce690.462148",
+    "type": "template",
+    "z": "995f7983.e3c6b8",
+    "name": "Wind direction",
+    "field": "payload",
+    "fieldType": "msg",
+    "format": "handlebars",
+    "syntax": "mustache",
+    "template": "The wind direction is: {{payload}} !",
+    "output": "str",
+    "x": 1140,
+    "y": 560,
+    "wires": [
+      [
+        "dc96165e.811b98"
+      ]
+    ]
+  },
+  {
+    "id": "8f4adee2.7bcb",
+    "type": "delay",
+    "z": "995f7983.e3c6b8",
+    "name": "",
+    "pauseType": "rate",
+    "timeout": "5",
+    "timeoutUnits": "seconds",
+    "rate": "1",
+    "nbRateUnits": "12",
+    "rateUnits": "hour",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": true,
+    "x": 520,
+    "y": 960,
+    "wires": [
+      [
+        "2b6f2920.6e86e6"
+      ]
+    ]
+  },
+  {
+    "id": "8e132871.7987a8",
+    "type": "template",
+    "z": "995f7983.e3c6b8",
+    "name": "Rain",
+    "field": "payload",
+    "fieldType": "msg",
+    "format": "handlebars",
+    "syntax": "mustache",
+    "template": "Rain accumulation so far: {{payload}} !",
+    "output": "str",
+    "x": 1110,
+    "y": 520,
+    "wires": [
+      [
+        "dc96165e.811b98"
+      ]
+    ]
+  },
+  {
+    "id": "8d1aa4ee.739548",
+    "type": "debug",
+    "z": "995f7983.e3c6b8",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "x": 260,
+    "y": 220,
+    "wires": []
+  },
+  {
+    "id": "2b6f2920.6e86e6",
+    "type": "twitter out",
+    "z": "995f7983.e3c6b8",
+    "twitter": "",
+    "name": "Tweet",
+    "x": 1170,
+    "y": 960,
+    "wires": []
+  },
+  {
+    "id": "cecd2fd0.4544b",
+    "type": "inject",
+    "z": "995f7983.e3c6b8",
+    "name": "",
+    "topic": "",
+    "payload": "DURISIMOS!!!",
+    "payloadType": "str",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 750,
+    "y": 1100,
+    "wires": [
+      [
+        "2b6f2920.6e86e6"
+      ]
+    ]
+  },
+  {
+    "id": "b688b770.1b7618",
+    "type": "mqtt-broker",
+    "z": "",
+    "name": "",
+    "broker": "test.mosquitto.org",
+    "port": "1883",
+    "clientid": "",
+    "usetls": false,
+    "compatmode": false,
+    "keepalive": "60",
+    "cleansession": true,
+    "birthTopic": "",
+    "birthQos": "0",
+    "birthPayload": "",
+    "closeTopic": "",
+    "closeQos": "0",
+    "closePayload": "",
+    "willTopic": "",
+    "willQos": "0",
+    "willPayload": ""
+  }
+]

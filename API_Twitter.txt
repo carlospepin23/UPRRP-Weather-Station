@@ -1,0 +1,18 @@
+//Essential information for connecting the Weather Station to its Twitter Account.
+
+Twitter API:
+
+API Key
+h7qQzD607WZYa4gIpb1mmcPOM
+
+API Secret Key
+d61CjLQjOejJzKabSRgjs3brhk2eoRsloP1fMpaUHtQmT9FpbM
+
+Bearer Token
+AAAAAAAAAAAAAAAAAAAAAOeRRgEAAAAAwW8j8DYSI6G4zULcRKxwSn9Di%2B0%3D9o1aPvCyJHsA5y5kphffAjLVuGCfIh7Ee1u9MwZ3FlNtUeZDza
+
+Token
+1414653472612421633-NRezTs2sfKf4B4AjgtjzRQmKd28euV
+
+ Secret Token 
+tn21UjGGeXaYZ6gHjxEkjMDgi0JjgV0LFJmDbrhZOsfN0
